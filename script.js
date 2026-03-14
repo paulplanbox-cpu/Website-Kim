@@ -65,12 +65,16 @@
       baAfterImg.setAttribute('aria-hidden', String(!isAfterShown));
 
       if (isAfterShown) {
+        heroBaBtn.classList.remove('btn--ba-before');
+        heroBaBtn.classList.add('btn--green');
         heroBaBtn.setAttribute('aria-label', 'Vorher-Bild anzeigen');
         heroBaBtn.innerHTML =
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
             '<path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>' +
           '</svg> Vorher ansehen';
       } else {
+        heroBaBtn.classList.remove('btn--green');
+        heroBaBtn.classList.add('btn--ba-before');
         heroBaBtn.setAttribute('aria-label', 'Nachher-Bild anzeigen');
         heroBaBtn.innerHTML =
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
