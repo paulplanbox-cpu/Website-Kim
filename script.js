@@ -182,7 +182,6 @@
       var data = new FormData(contactForm);
       fetch('/', { method: 'POST', body: data })
         .then(function () {
-          contactForm.hidden = true;
           formSuccess.hidden = false;
         })
         .catch(function () {
