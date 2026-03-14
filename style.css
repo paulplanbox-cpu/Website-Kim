@@ -1528,6 +1528,9 @@ details[open]>.faq__question::after {
   color: var(--color-text-muted);
 }
 
+.contact-form__success[hidden] {
+  display: none;
+}
 .contact-form__success {
   display: flex;
   align-items: center;
