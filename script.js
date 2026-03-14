@@ -172,16 +172,49 @@
     });
   }
 
-  /* ---- Contact form — Netlify AJAX submit ---- */
-  var contactForm = document.querySelector('.contact-form__form');
-  var formSuccess = document.getElementById('formSuccess');
-  var formError   = document.getElementById('formError');
+  /* ---- Contact form — validation + Netlify AJAX submit ---- */
+  var contactForm    = document.querySelector('.contact-form__form');
+  var formSuccess    = document.getElementById('formSuccess');
+  var formError      = document.getElementById('formError');
+  var nameInput      = document.getElementById('name');
+  var emailInput     = document.getElementById('email');
+  var nachrichtInput = document.getElementById('nachricht');
+  var nameError      = document.getElementById('nameError');
+  var emailError     = document.getElementById('emailError');
+  var nachrichtError = document.getElementById('nachrichtError');
+
+  function showFieldError(input, errorEl) {
+    input.classList.add('form-input--error');
+    errorEl.hidden = false;
+  }
+
+  function clearFieldError(input, errorEl) {
+    input.classList.remove('form-input--error');
+    errorEl.hidden = true;
+  }
 
   if (contactForm && formSuccess && formError) {
+    nameInput.addEventListener('input', function () { clearFieldError(nameInput, nameError); });
+    emailInput.addEventListener('input', function () { clearFieldError(emailInput, emailError); });
+    nachrichtInput.addEventListener('input', function () { clearFieldError(nachrichtInput, nachrichtError); });
+
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       formSuccess.hidden = true;
       formError.hidden   = true;
+
+      var valid = true;
+      if (!nameInput.value.trim()) {
+        showFieldError(nameInput, nameError); valid = false;
+      }
+      if (!emailInput.value.trim() || !emailInput.validity.valid) {
+        showFieldError(emailInput, emailError); valid = false;
+      }
+      if (!nachrichtInput.value.trim()) {
+        showFieldError(nachrichtInput, nachrichtError); valid = false;
+      }
+      if (!valid) return;
+
       var data = new FormData(contactForm);
       fetch('/', { method: 'POST', body: data })
         .then(function (res) {

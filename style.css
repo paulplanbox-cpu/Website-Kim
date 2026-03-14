@@ -1511,6 +1511,23 @@ details[open]>.faq__question::after {
   color: rgba(28, 28, 28, 0.35);
 }
 
+.form-input--error,
+.form-textarea.form-input--error {
+  border-color: #e05555;
+  box-shadow: 0 0 0 3px rgba(224, 85, 85, 0.15);
+}
+
+.form-field-error {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  color: #e05555;
+}
+
+.form-field-error[hidden] {
+  display: none;
+}
+
 .form-textarea {
   resize: vertical;
   min-height: 120px;
