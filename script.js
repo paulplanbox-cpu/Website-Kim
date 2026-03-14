@@ -172,4 +172,23 @@
     });
   }
 
+  /* ---- Contact form — Netlify AJAX submit ---- */
+  var contactForm = document.querySelector('.contact-form__form');
+  var formSuccess = document.getElementById('formSuccess');
+
+  if (contactForm && formSuccess) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(contactForm);
+      fetch('/', { method: 'POST', body: data })
+        .then(function () {
+          contactForm.hidden = true;
+          formSuccess.hidden = false;
+        })
+        .catch(function () {
+          alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+        });
+    });
+  }
+
 }());
