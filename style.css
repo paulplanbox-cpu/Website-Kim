@@ -1164,15 +1164,21 @@ section {
   gap: var(--space-sm);
 }
 
+.portfolio__item {
+  min-width: 0;
+}
+
 .portfolio__img-wrap {
   overflow: hidden;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition: box-shadow 0.45s ease;
+  height: 300px;
 }
 
 .portfolio__img-wrap picture {
   display: block;
+  height: 100%;
 }
 
 .portfolio__item:hover .portfolio__img-wrap {

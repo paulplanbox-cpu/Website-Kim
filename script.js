@@ -115,7 +115,7 @@
 
     function updateLightbox() {
       var img = images[currentIndex];
-      lbImg.src = img.currentSrc || img.src;
+      lbImg.src = img.dataset.full || img.currentSrc || img.src;
       lbImg.alt = img.alt;
       var fig = img.closest('figure');
       var cap = fig ? fig.querySelector('figcaption') : null;
